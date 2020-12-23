@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://operations.genericows.sibs.com.ar" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://operations.genericows.sibs.com.ar" xmlns:intf="http://operations.genericows.sibs.com.ar" xmlns:tns1="http://dataTypes.genericows.sibs.com.ar" xmlns:tns2="http://operationsDataTypes.genericows.sibs.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://operations.genericows.sibs.com.ar" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://operationsDataTypes.genericows.sibs.com.ar"/>
+   <import namespace="http://dataTypes.genericows.sibs.com.ar"/>
+   <element name="directa">
+    <complexType>
+     <sequence>
+      <element name="hdReq" type="tns1:HeaderReq"/>
+      <element name="check" type="tns1:Check"/>
+      <element name="utility" type="xsd:string"/>
+      <element name="barCode" type="xsd:string"/>
+      <element name="medioPago" type="xsd:string"/>
+      <element name="creditCard" type="xsd:string"/>
+      <element name="amount" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="directaResponse">
+    <complexType>
+     <sequence>
+      <element name="directaReturn" type="tns2:DirectaResp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="reversa">
+    <complexType>
+     <sequence>
+      <element name="hdReq" type="tns1:HeaderReq"/>
+      <element name="terminalOriginal" type="xsd:string"/>
+      <element name="cajeroOriginal" type="xsd:string"/>
+      <element name="fechaHoraOriginal" type="xsd:dateTime"/>
+      <element name="nroSecuenciaOriginal" type="xsd:string"/>
+      <element name="tipoReversa" type="xsd:string"/>
+      <element name="utility" type="xsd:string"/>
+      <element name="amount" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="reversaResponse">
+    <complexType>
+     <sequence>
+      <element name="reversaReturn" type="tns2:ReversaResp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consulta">
+    <complexType>
+     <sequence>
+      <element name="hdReq" type="tns1:HeaderReq"/>
+      <element name="utility" type="xsd:string"/>
+      <element name="cod_barra" type="xsd:string"/>
+      <element name="codigo_cliente" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultaResponse">
+    <complexType>
+     <sequence>
+      <element name="consultaReturn" type="tns2:ConsultaResp"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_ArrayFieldsQuerie">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:ArrayFieldsQuerie"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dataTypes.genericows.sibs.com.ar" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://operationsDataTypes.genericows.sibs.com.ar"/>
+   <import namespace="http://operations.genericows.sibs.com.ar"/>
+   <complexType name="HeaderReq">
+    <sequence>
+     <element name="algoritmo" nillable="true" type="xsd:string"/>
+     <element name="cajero" nillable="true" type="xsd:string"/>
+     <element name="codTrx" nillable="true" type="xsd:string"/>
+     <element name="fechaHora" nillable="true" type="xsd:dateTime"/>
+     <element name="idMensaje" nillable="true" type="xsd:string"/>
+     <element name="marca" nillable="true" type="xsd:string"/>
+     <element name="nroSecuencia" nillable="true" type="xsd:string"/>
+     <element name="plataforma" nillable="true" type="xsd:string"/>
+     <element name="puesto" nillable="true" type="xsd:string"/>
+     <element name="supervisor" nillable="true" type="xsd:string"/>
+     <element name="terminal" nillable="true" type="xsd:string"/>
+     <element name="version" nillable="true" type="xsd:string"/>
+     <element name="versionAutorizador" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Check">
+    <sequence>
+     <element name="accountID" nillable="true" type="xsd:string"/>
+     <element name="amount" nillable="true" type="xsd:string"/>
+     <element name="bankBranch" nillable="true" type="xsd:string"/>
+     <element name="bankID" nillable="true" type="xsd:string"/>
+     <element name="bankSquare" nillable="true" type="xsd:string"/>
+     <element name="checkNumber" nillable="true" type="xsd:string"/>
+     <element name="expiration" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+   <complexType name="HeaderResp">
+    <sequence>
+     <element name="algoritmo" nillable="true" type="xsd:string"/>
+     <element name="cajero" nillable="true" type="xsd:string"/>
+     <element name="codError" nillable="true" type="xsd:int"/>
+     <element name="codSeveridad" nillable="true" type="xsd:int"/>
+     <element name="fechaHora" nillable="true" type="xsd:dateTime"/>
+     <element name="idMensaje" nillable="true" type="xsd:string"/>
+     <element name="marca" nillable="true" type="xsd:string"/>
+     <element name="nroSecuencia" nillable="true" type="xsd:string"/>
+     <element name="terminal" nillable="true" type="xsd:string"/>
+     <element name="version" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayFieldsQuerie">
+    <sequence>
+     <element name="cob_cod_barra" nillable="true" type="xsd:string"/>
+     <element name="cob_prior_gpo" nillable="true" type="xsd:string"/>
+     <element name="cob_prior_nro" nillable="true" type="xsd:string"/>
+     <element name="cob_texto_fe" nillable="true" type="xsd:string"/>
+     <element name="cob_estado" nillable="true" type="xsd:string"/>
+     <element name="cob_cobro_tipo" nillable="true" type="xsd:string"/>
+     <element name="cob_comp_imp" nillable="true" type="xsd:int"/>
+     <element name="numero_de_orden" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://operationsDataTypes.genericows.sibs.com.ar" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://operations.genericows.sibs.com.ar"/>
+   <import namespace="http://dataTypes.genericows.sibs.com.ar"/>
+   <complexType name="DirectaResp">
+    <sequence>
+     <element name="header" nillable="true" type="tns1:HeaderResp"/>
+     <element name="msg" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ReversaResp">
+    <sequence>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="header" nillable="true" type="tns1:HeaderResp"/>
+     <element name="operador" nillable="true" type="xsd:string"/>
+     <element name="ticket" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ConsultaResp">
+    <sequence>
+     <element name="cob_cliente_nomb" nillable="true" type="xsd:string"/>
+     <element name="count" nillable="true" type="xsd:int"/>
+     <element name="fields" nillable="true" type="impl:ArrayOf_tns1_ArrayFieldsQuerie"/>
+     <element name="header" nillable="true" type="tns1:HeaderResp"/>
+     <element name="seleccion_con_prioridad" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+   <wsdl:message name="reversaRequest">
+      <wsdl:part element="impl:reversa" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="consultaRequest">
+      <wsdl:part element="impl:consulta" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="directaResponse">
+      <wsdl:part element="impl:directaResponse" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="directaRequest">
+      <wsdl:part element="impl:directa" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="reversaResponse">
+      <wsdl:part element="impl:reversaResponse" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="consultaResponse">
+      <wsdl:part element="impl:consultaResponse" name="parameters"/>
+   </wsdl:message>
+   <wsdl:portType name="MethodsWS">
+      <wsdl:operation name="directa">
+         <wsdl:input message="impl:directaRequest" name="directaRequest"/>
+         <wsdl:output message="impl:directaResponse" name="directaResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="reversa">
+         <wsdl:input message="impl:reversaRequest" name="reversaRequest"/>
+         <wsdl:output message="impl:reversaResponse" name="reversaResponse"/>
+      </wsdl:operation>
+     <wsdl:operation name="consulta">
+         <wsdl:input message="impl:consultaRequest" name="consultaRequest"/>
+        <wsdl:output message="impl:consultaResponse" name="consultaResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="genericoMethodsSoapBinding" type="impl:MethodsWS">
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="directa">
+         <wsdlsoap:operation soapAction=""/>
+         <wsdl:input name="directaRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="directaResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="reversa">
+         <wsdlsoap:operation soapAction=""/>
+         <wsdl:input name="reversaRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="reversaResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="consulta">
+         <wsdlsoap:operation soapAction=""/>
+         <wsdl:input name="consultaRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="consultaResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="genericoMethodsService">
+     <wsdl:port binding="impl:genericoMethodsSoapBinding" name="genericoMethods">
+        <wsdlsoap:address location="http://192.168.205.9:8080/genericoWS/services/MethodsWS"/>
+     </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
